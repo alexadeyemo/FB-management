@@ -4,9 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         height: 'auto',
-        events: '../TeamManager/GetMatches.php', // Path to your PHP endpoint
+        events: '../TeamManager/datafetch/GetMatches.php', // Path to your PHP endpoint
         eventColor: ' #f2f0b4',
         eventTextColor: ' #000000'
     });
     calendar.render();
 });
+
+
+
