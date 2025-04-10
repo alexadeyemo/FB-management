@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Manager</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard | Team Manager</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <script src="../TeamManager/js/script.js"></script> <!-- Link your JavaScript file -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--Link to Chart.js API- pie chart -->
 </head>
 
 
@@ -17,33 +19,15 @@
         <header>
             <h1>Team Dashboard</h1>
         </header>
-    </div>
-    <div id="chartContainer">
-        <canvas id="occupancyChart"></canvas>
+
+        <div class="dashboard-chart">
+            <canvas id="team-stats-chart"></canvas>
+        </div>
+
+        <!-- <div id="todays-match-card">
+        </div> -->
     </div>
 
-    <script>
-        var occupiedRooms = <?php echo $occupiedRooms; ?>;
-        var emptyRooms = <?php echo $emptyRooms; ?>;
-
-        var ctx = document.getElementById('occupancyChart').getContext('2d');
-        var occupancyChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                labels: ['Occupied Rooms', 'Empty Rooms'],
-                datasets: [{
-                    label: 'Room Occupancy',
-                    data: [occupiedRooms, emptyRooms], 
-                    backgroundColor: ['#ff9999', '#66b3ff'],
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                responsive: true, 
-                maintainAspectRatio: false 
-            }
-        });
-    </script>
 
     <footer>
         <p>goikontech@gmail.com</p>
@@ -57,15 +41,30 @@
 
 
 
-<style>
-    #chartContainer {
-        width: 50%; 
-        margin: 0 auto; 
-        padding-top: 20px; 
-    }
 
-    #StatsChart a{
-        width: 100% !important; 
-        height: 400px;          
-    }
+<style>
+.dashboard-chart{
+    margin: 20px;
+    background-color: #153C57;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#team-stats-chart{
+    width: 400px !important;
+    height: 400px !important;
+}
+
+/* todays match card */
+#todays-match-card{
+    display: none; 
+    background:rgb(157, 83, 83); 
+    color: white; 
+    padding: 15px; 
+    margin: 50px 120px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    width: 20%;
+}
 </style>

@@ -1,4 +1,5 @@
 <?php
+
 $database = new SQLite3('../fb_managment_system.db');
 
 $query = "SELECT t1.team_name AS team1, t2.team_name AS team2, m.Match_Date 
