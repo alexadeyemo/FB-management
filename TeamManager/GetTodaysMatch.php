@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json'); // Set the content type to JSON
-
 // Connect to the SQLite database
 $database = new SQLite3('../fb_managment_system.db');
 

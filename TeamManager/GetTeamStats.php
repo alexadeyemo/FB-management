@@ -1,6 +1,4 @@
 <?php
-header('Content-Type: application/json');
-
 $db = new SQLite3('../fb_managment_system.db');
 
 // *****NEEDS ADAPTING

@@ -77,9 +77,8 @@
 
 
 /* todays match card */
-#todays-match-card{
-    display: none; 
-    background:rgb(157, 83, 83); 
+#todays-match-card{ 
+    background:#9d5353; 
     color: white; 
     padding: 15px; 
     margin: 50px 120px;

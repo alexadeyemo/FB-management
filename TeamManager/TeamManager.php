@@ -45,7 +45,7 @@
 <style>
 .dashboard-chart{
     margin: 20px;
-    background-color: #153C57;
+    background-color:rgb(170, 175, 179);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

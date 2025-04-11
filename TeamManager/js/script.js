@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const matchDate = new Date(data.Match_Date);
             // needs to be looked at for the time
             const time = matchDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
-            const length = 
 
             card.innerHTML = `
                 <h2>📅 Today’s Match</h2>
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+// get team match stats
 document.addEventListener('DOMContentLoaded', function () {
     fetch('../TeamManager/GetTeamStats.php')
         .then(response => response.json())
