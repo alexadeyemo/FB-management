@@ -14,17 +14,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // get today's match 
+// document.addEventListener('DOMContentLoaded', function () {
+//     fetch('../TeamManager/GetTodaysMatch.php')
+//         .then(res => res.json())
+//         .then(data => {
+//             const card = document.getElementById('todays-match-card');
+
+//             if (data.error || data.message) return; // no match today
+
+//             const matchDate = new Date(data.m.Match_Date);
+//             // needs to be looked at for the time
+//             const time = matchDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+
+//             card.innerHTML = `
+//                 <h2>📅 Today’s Match</h2>
+//                 <h3><strong>${data.m.TeamA}</strong> vs <strong>${data.m.TeamB}</strong></h3>
+//                 <br>
+//                 <p>🕒 Time: ${time}</p>
+//                 <p>⏳ Match Length: ${data.m.Match_Length} minutes</p>
+//             `;
+//             card.style.display = 'block';
+//         })
+//         .catch(err => console.error('Error fetching today’s match:', err));
+// });
+
+
 document.addEventListener('DOMContentLoaded', function () {
     fetch('../TeamManager/GetTodaysMatch.php')
         .then(res => res.json())
         .then(data => {
+            console.log("Match Data:", data); // DEBUG
+
             const card = document.getElementById('todays-match-card');
 
-            if (data.error || data.message) return; // no match today
+            if (data.error || data.message) return;
 
             const matchDate = new Date(data.Match_Date);
-            // needs to be looked at for the time
-            const time = matchDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+            const time = matchDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
             card.innerHTML = `
                 <h2>📅 Today’s Match</h2>
@@ -37,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(err => console.error('Error fetching today’s match:', err));
 });
-
 
 
 
