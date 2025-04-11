@@ -20,8 +20,28 @@
             <h1>Team Dashboard</h1>
         </header>
 
-        <div class="dashboard-chart">
-            <canvas id="team-stats-chart"></canvas>
+        <div class="card-section">
+            <div class="row">
+                <div class="upper-left-card">
+                    <div class="dashboard-chart card">
+                        <canvas id="team-stats-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="upper-right-card">
+                    <div class="card">gatah</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="lower-left-card">
+                    <div class="card">gatah</div>
+                </div>
+
+                <div class="lower-right-card">
+                    <div class="card">gatah</div>
+                </div>
+            </div>
         </div>
 
         <!-- <div id="todays-match-card">
@@ -43,11 +63,55 @@
 
 
 <style>
-.dashboard-chart{
-    margin: 20px;
-    background-color:rgb(170, 175, 179);
+.card-section {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card {
+    background-color:rgb(171, 198, 216);
     border-radius: 8px;
     padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.row{
+    display: flex;
+}
+
+.upper-left-card {
+    padding: 10px;
+    margin: 10px;
+    min-width: 45%;
+}
+
+.upper-right-card {
+    padding: 10px;
+    margin: 10px;
+    min-width: 45%;
+}
+
+/* Second row appears after scrolling */
+.lower-left-card {
+    padding: 10px;
+    margin: 10px;
+    min-width: 45%;
+}
+
+.lower-right-card {
+   padding: 10px;
+   margin: 10px;
+   min-width: 45%;
+}
+
+
+.dashboard-chart{
+    border-radius: 8px;
+    padding: 40px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

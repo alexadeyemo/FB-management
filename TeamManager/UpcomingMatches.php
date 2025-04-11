@@ -1,6 +1,5 @@
 <?php
 $database = new SQLite3('../fb_managment_system.db');
-$database = new SQLite3('C:\xampp\htdocs\Group30\FB-management\fb_managment_system.db');
 
 $query = "SELECT  t1.team_name AS team1, t2.team_name AS team2, m.Match_Date 
           FROM match m
@@ -29,7 +28,7 @@ if (!$results) {
     <?php include 'sidebar.php'; ?>
     <div class="content">
         <header>
-            <h1>Match Calendar</h1>
+            <h1>Upcoming Matches</h1>
         </header>
         <h2>Upcoming Matches</h2>
         <table>
