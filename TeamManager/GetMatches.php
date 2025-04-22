@@ -16,7 +16,7 @@ $stmt = $database->prepare('SELECT
     INNER JOIN Team t1 ON m.TeamA_ID = t1.Team_ID
     INNER JOIN Team t2 ON m.TeamB_ID = t2.Team_ID
     INNER JOIN Users u ON (t1.Manager_ID = u.User_ID OR t2.Manager_ID = u.User_ID)
-    WHERE m.Match_Date >= DATE("now") AND u.Email_Address = :email
+    WHERE m.Match_Date <= DATE("now") AND u.Email_Address = :email
     ORDER BY m.Match_Date ASC');
 
 $stmt->bindValue(':email', $email, SQLITE3_TEXT);

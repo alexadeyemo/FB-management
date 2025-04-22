@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: application/json');
 session_start();
 
 if (!isset($_SESSION['email'])) {
@@ -28,7 +27,7 @@ if ($results) {
 } else {
     echo json_encode(['message' => 'No match today']); 
 }
-?>
+?>  
 
 
 

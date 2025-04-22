@@ -71,7 +71,7 @@
 
 .fc-day:hover {
     background-color: #ab5757; /* background on hover */
-    color:rgb(185, 181, 181);
+    color:#b9b5b5;
     cursor: pointer;
 }
 
