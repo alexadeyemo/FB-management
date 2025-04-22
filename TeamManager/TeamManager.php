@@ -24,6 +24,7 @@
             <div class="row">
                 <div class="upper-left-card">
                     <div class="dashboard-chart card">
+                        <h2>Team Statistics</h2>
                         <canvas id="team-stats-chart"></canvas>
                     </div>
                 </div>
@@ -35,11 +36,15 @@
 
             <div class="row">
                 <div class="lower-left-card">
-                    <div class="card">gatah</div>
+                    <div class="card">
+                        
+                    </div>
                 </div>
 
                 <div class="lower-right-card">
-                    <div class="card">gatah</div>
+                    <div class="card">
+                        <h2>Upcoming Matches</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,26 +91,26 @@
 .upper-left-card {
     padding: 10px;
     margin: 10px;
-    min-width: 45%;
+    min-width: 40%;
 }
 
 .upper-right-card {
     padding: 10px;
     margin: 10px;
-    min-width: 45%;
+    min-width: 50%;
 }
 
 /* Second row appears after scrolling */
 .lower-left-card {
     padding: 10px;
     margin: 10px;
-    min-width: 45%;
+    min-width: 40%;
 }
 
 .lower-right-card {
    padding: 10px;
    margin: 10px;
-   min-width: 45%;
+   min-width: 50%;
 }
 
 
