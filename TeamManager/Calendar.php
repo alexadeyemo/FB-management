@@ -58,7 +58,7 @@
 
 /* Change the color of the dates */
 .fc-day{
-    background-color:rgb(66, 100, 130);
+    background-color:#1e3c42;
 }
 
 /* the background color of today's date */

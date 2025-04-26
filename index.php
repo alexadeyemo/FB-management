@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Styled Login Page</title>
+    <title>Login Page | GOIKON</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,6 +69,7 @@
 
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+            
 
             <input type="submit" value="Sign In">
         </form>
