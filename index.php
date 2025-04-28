@@ -58,6 +58,12 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        .toggle-checkbox{
+            text-align: right;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -69,6 +75,10 @@
 
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+            <div class="toggle-checkbox">
+                <input type="checkbox" onclick="togglePassword('password')">
+                Show Password
+            </div>
             
 
             <input type="submit" value="Sign In">
@@ -77,4 +87,10 @@
 </body>
 </html>
 
-
+<script>
+// toggle show password
+function togglePassword(id) {
+  const passwordField = document.getElementById(id);
+  passwordField.type = passwordField.type === "password" ? "text" : "password";
+}
+</script>

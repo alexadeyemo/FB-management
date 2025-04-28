@@ -35,9 +35,9 @@
 <style>
 #calendar{
     background-color:rgb(232, 233, 236);
-    width: auto;
+    max-width: 800px;
     height: auto;
-    margin: 50px 120px;
+    margin: 50px 220px;
     border: 2px solid black;
     padding: 60px;
     position: relative;
@@ -58,7 +58,7 @@
 
 /* Change the color of the dates */
 .fc-day{
-    background-color:#1e3c42;
+    background-color: #1e3c42;
 }
 
 /* the background color of today's date */
