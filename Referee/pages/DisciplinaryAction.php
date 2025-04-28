@@ -30,17 +30,10 @@ $actions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disciplinary Action</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-=======
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disciplinary Action</title>
-<link rel="stylesheet" href="../assets/css/style.css">
->>>>>>> jamie
 </head>
 <body>
 <?php include '../includes/sidebar.php'; ?>
