@@ -22,7 +22,19 @@
     ?>
 
     <div>
-        <?php include("AdminViewStatistics.php"); ?>
+        <a href="AdminViewStatistics.php">
+            <button>View Match Statistics</button>
+        </a>
+    </div>
+
+    <div>
+        <a href="AdminCreateStatPage.php">
+            <button>Add Match Statistics</button>
+        </a>
+    </div>
+
+    <div>
+        <?php include ("AdminViewMaintenance.php"); ?>
     </div>
 </div>
 
