@@ -12,6 +12,8 @@
         <h1>Reports</h1>
     </header>
 
-
+    <?php
+    include ("sidebar2.php");
+    ?>
 
 </div>
