@@ -6,6 +6,33 @@
     <title>Teams</title>
 </head>
 
+
+<style> 
+.content {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px; 
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.content div {
+    margin-top: 20px;
+}
+</style>
 <body>
 <div class="content">
     <header>
@@ -17,11 +44,8 @@
     ?>
 
     <div>
-        <a href="AdminCreateTeamPage.php">
-            <button>Add New Team</button>
-        </a>
+        <?php include("AdminViewTeams.php"); ?>
     </div>
-
-    <?php include("AdminViewTeams.php"); ?>
-
 </div>
+</body>
+</html>

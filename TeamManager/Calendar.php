@@ -1,4 +1,4 @@
-Calendar.php <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,7 +58,7 @@ Calendar.php <!DOCTYPE html>
 
 /* Change the color of the dates */
 .fc-day{
-    background-color:#1e3c42;
+    background-color: #1e3c42;
 }
 
 /* the background color of today's date */

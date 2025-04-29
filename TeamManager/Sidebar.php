@@ -7,6 +7,7 @@
         <li><a href="TrainingSchedule.php">Training Schedule</a></li>
         <li><a href="MatchSettings.php">Match Settings</a></li>
         <li><a href="Messages.php">Messages</a></li>
+
         <li><a href="Calendar.php">Calendar</a></li>
         <li><a href="Logout.php">Log out</a></li>
     </ul>

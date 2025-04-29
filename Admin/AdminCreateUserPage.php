@@ -12,7 +12,13 @@
     <?php
     include("sidebar2.php");
     ?>
-    <div> <h2 class="centered_header">Create New User</h2></div>
+    <div>
+        <h2 class="centered_header" style="text-align: center;">Create New User
+        <a href="AdminUsers.php">
+            <button style="background-color:#c41818; margin-left:15px;"> < Return to page </button>
+        </a>
+        </h2>
+    </div>
 
     <div class="main">
         <form action="AdminCreateUserRecord.php" method="post">

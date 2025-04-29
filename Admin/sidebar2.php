@@ -17,7 +17,8 @@
             <li><a href="AdminTeams.php">Teams</a></li>
             <li><a href="AdminFields.php">Fields</a></li>
             <li><a href="AdminReport.php">Reports</a></li>
-            <li><a href="AdminSettings.php">Settings</a></li>
+            <li><a href="Settings.php">Settings</a></li>
+            <li><a href="Logout.php">Log out</a></li>
         </ul>
     </div>
 </body>
