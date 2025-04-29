@@ -4,7 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../../index.php");
     exit();
 }
-include "../fb_managment_system.db";
+include "../db.php";
 
 // Fetch all incidents along with player name and team name
 $query = "
