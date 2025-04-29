@@ -5,18 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Users</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
 </head>
 
-<body>
-    <?php
-    include("sidebar2.php");
-    ?>
-    <div class="content">
-        <h2 class="centered-header">All Users</h2>
-    
+<style>
+.admin-view-users{
+    margin-right: 300px;
+    margin-left: 0;
+}
+</style>
 
-    <div>
+<body>
+<?php include("sidebar2.php");?>
+<div class="content">
+    <h2 class="centered-header" style="text-align: center;">All Users
+    <a href="AdminUsers.php">
+        <button style="background-color: #c41818; margin-left:15px;"> < Return to page </button>
+    </a>
+    </h2>
+    
+    <div class="admin-view-users">
         <?php
         $db = new SQLite3('../fb_managment_system.db');
         $select_query = "SELECT * FROM Users";
@@ -54,6 +62,7 @@
         $db->close();
         ?>
     </div>
+</div>
 </body>
 </html>
 
