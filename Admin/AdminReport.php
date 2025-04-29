@@ -15,14 +15,14 @@
     <header>
         <h1>Reports</h1>
     </header>
-<<<<<<< HEAD
+
 
     <?php
     include ("sidebar2.php");
     ?>
 
 </div>
-=======
+
 </body>
 </html>
->>>>>>> e8e7caee61e3f75fd80807267987d07bb6818a3e
+
