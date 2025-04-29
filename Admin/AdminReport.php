@@ -34,6 +34,12 @@
     </div>
 
     <div>
+        <a href="AdminCreateMaintPage.php">
+            <button>Add Match Maintenance Schedule</button>
+        </a>
+    </div>
+
+    <div>
         <?php include ("AdminViewMaintenance.php"); ?>
     </div>
 </div>
