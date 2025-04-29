@@ -21,6 +21,9 @@
     include ("sidebar2.php");
     ?>
 
+    <div>
+        <?php include("AdminViewStatistics.php"); ?>
+    </div>
 </div>
 
 </body>
