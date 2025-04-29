@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
     height: 100vh;
 }
 
@@ -54,10 +53,12 @@ body {
 
 /* Content Styles */
 .content {
-    margin-left: 250px; /* Push content to the right of the fixed sidebar */
+    margin-left: 250px;
     padding: 20px;
-    width: calc(100% - 250px); /* Prevent overlap */
-    box-sizing: border-box;
+    width: calc(100% - 250px);
+    flex: 1;
+    padding-bottom: 60px; /* Space for footer */
+
 }
 
 .content header {
@@ -109,6 +110,7 @@ button {
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px;
+    text-decoration: none;
 }
 
 button:hover {
@@ -181,42 +183,6 @@ button:hover {
     border-bottom: none;
 }
 
-.role-container {
-    background-color: #001A70; /* Dark blue */
-    color: white;
-    border-radius: 60% / 40%;
-    width: 300px;
-    margin: 50px auto;
-    padding: 30px 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-.role-container h2 {
-    margin-bottom: 20px;
-}
-
-.role-container select,
-.role-container input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 4px;
-}
-
-.role-container button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    background-color: white;
-    color: #001A70;
-    cursor: pointer;
-}
-
-.role-container button:hover {
-    background-color: #ccc;
-}
 
 table {
     width: 100%;

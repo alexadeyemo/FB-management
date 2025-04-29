@@ -42,7 +42,6 @@ $incidents = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <h1>Incident Reports</h1>
     </header>
     <p class="text-center">View Incident Report</p>
-
     <div class="card-section">
         <div class="table-container">
             <table class="custom-table history-table">
