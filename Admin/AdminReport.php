@@ -14,8 +14,8 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 40px;
-    margin-top: 20px;
+    gap: 0px;
+    margin-top: 10px;
 
 }
 
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .buttons-column button {
@@ -41,7 +41,7 @@
 
 .table-wrapper {
     max-width: 100%;
-    margin-top: 0;
+    margin: 0;
 }
 
 </style>

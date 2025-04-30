@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Password</title>
+    <title>Change Password | Admin</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -17,6 +17,9 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
+<a href="Settings.php">
+    <button style="margin-left:10px; background-color: red;">Go back</button>
+</a>
 <form method="POST" action="AdminProcessChangePassword.php">
     <label>New Password:</label>
     <input type="passwword" name="newPassword" required>

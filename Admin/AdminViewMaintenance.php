@@ -2,12 +2,13 @@
 .admin-view-maint {
     display: flex;
     justify-content: center;
-
+    margin-right: 150px;
+    margin-top: 0;
 }
 
 .admin-view-maint table {
     border-collapse: collapse;
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     text-align: center;
 }
