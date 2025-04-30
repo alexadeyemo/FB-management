@@ -175,6 +175,7 @@
                               t1.Team_Name AS team1, 
                               t2.Team_Name AS team2, 
                               m.Match_Date,
+                              f.Field_name,
                               CASE 
                                   WHEN m.TeamA_ID = :team_id THEN "Home" 
                                   ELSE "Away" 
@@ -182,6 +183,8 @@
                           FROM Match m
                           INNER JOIN Team t1 ON m.TeamA_ID = t1.Team_ID
                           INNER JOIN Team t2 ON m.TeamB_ID = t2.Team_ID
+                          INNER JOIN Field_Booking fb ON m.Booking_ID = fb.Booking_ID
+                          INNER JOIN Field f ON fb.Field_ID = f.Field_ID
                           WHERE (m.TeamA_ID = :team_id OR m.TeamB_ID = :team_id)
                           AND DATE(m.Match_Date) >= DATE("now")
                           ORDER BY m.Match_Date ASC');
@@ -198,7 +201,7 @@
                           <tr>
                               <th>Matchup</th>
                               <th>Date</th>
-                              <th>Type</th>
+                              <th>Field</th>
                           </tr>
                           <?php while ($row = $results->fetchArray(SQLITE3_ASSOC)): 
                               $isHome = $row['match_type'] == 'Home';
@@ -209,7 +212,7 @@
                           <tr class="<?= $rowClass ?>">
                               <td><?= htmlspecialchars($yourTeam) ?> vs <?= htmlspecialchars($opponent) ?></td>
                               <td><?= htmlspecialchars($row['Match_Date']) ?></td>
-                              <td><span class="match-type"><?= htmlspecialchars($row['match_type']) ?></span></td>
+                              <td><?= htmlspecialchars($row['Field_name']) ?></td>
                           </tr>
                           <?php endwhile; ?>
                       </table>
