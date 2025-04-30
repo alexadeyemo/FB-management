@@ -14,31 +14,32 @@
         <header>
             <h1>Admin Dashboard</h1>
         </header>
+
+        <div>
+            <?php
+            $db =  new SQLite3('../fb_managment_system.db');
+            $query = "SELECT COUNT (*) as total_users FROM Users";
+            $result = $db->querySingle($query, true);
+            
+            if ($result) {
+                echo "Total Users: " . $result['total_users'];
+            } else {
+                echo "error";
+            }
+            $db->close();
+            ?>
+        </div>
+            <table>
+                <tr>
+                    <th>Active Users</th>
+                </tr>
+                <tr>
+                    <td><?php echo htmlspecialchars(string: $row['total_users']); ?></td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div>
-        <?php
-        $db =  new SQLite3('../fb_managment_system.db');
-        $query = "SELECT COUNT (*) as total_users FROM Users";
-        $result = $db->querySingle($query, true);
-        
-        if ($result) {
-            echo "Total Users: " . $result['total_users'];
-        } else {
-            echo "error";
-        }
-        $db->close();
-        ?>
-    </div>
-        <table>
-            <tr>
-                <th>Active Users</th>
-            </tr>
-            <tr>
-                <td><?php echo htmlspecialchars(string: $row['total_users']); ?></td>
-            </tr>
-        </table>
-    </div>
 
 </body>
 </html>

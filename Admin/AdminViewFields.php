@@ -1,67 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
+<style>
+.fields-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Fields</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
+.table-wrapper {
+    width: 100%;
+    margin-right: 350px;
+}
 
-<body>
-    <?php
-    include("sidebar2.php");
-    ?>
-    <div class="content">
-        <h2 class="centered-header">All Fields</h2>
-    
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-    <div>
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background-color: #153C57;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.centered-header {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+
+</style>
+
+
+<div class="fields-container">
+    <h2 class="centered-header">All Fields
+        <a href="AdminCreateFieldPage.php">
+            <button>Add New Field</button>
+        </a>
+    </h2>
+
+    <div class="table-wrapper">
         <?php
         $db = new SQLite3('../fb_managment_system.db');
         $select_query = "SELECT * FROM Field";
         $result = $db->query($select_query);
 
         echo "<table>";
-        echo "<tr> <th>Field ID</th> <th>Field Name</th> <th>Field Owner ID</th> <th>Field Capacity</th> <th>Address Line 1</th> <th>City</th> <th>Country</th> <th>Postcode</th> <th>GLT</th> <th>VAR</th> <th>Viewing Screens</th> <th>Press Box</th> <th>Charge Per Hour</th> <th>Action</th> </tr>";
+        echo "<tr> 
+            <th>Field ID</th> <th>Field Name</th> <th>Field Owner ID</th> 
+            <th>Field Capacity</th> <th>Address Line 1</th> <th>City</th> 
+            <th>Country</th> <th>Postcode</th> <th>GLT</th> <th>VAR</th> 
+            <th>Viewing Screens</th> <th>Press Box</th> <th>Charge Per Hour</th> 
+            <th>Action</th>
+        </tr>";
 
         while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            $id = $row['Field_ID'];
-            $fieldName = $row['Field_name'];
-            $ownerID = $row['FieldOwner_ID'];
-            $capacity = $row['Field_Capacity'];
-            $address = $row['Address_Line1'];
-            $city = $row['City'];
-            $country = $row['Country'];
-            $postcode = $row['Postcode'];
-            $glt = $row['GLT'];
-            $var = $row['VAR'];
-            $viewScreens = $row['View_Screens'];
-            $pressBox = $row['Press_Box'];
-            $chg = $row['Chg_Hour'];
-
             echo "<tr>
-                    <td>$id</td>
-                    <td>$fieldName</td>
-                    <td>$ownerID</td>
-                    <td>$capacity</td>
-                    <td>$address</td>
-                    <td>$city</td>
-                    <td>$country</td>
-                    <td>$postcode</td>
-                    <td>$glt</td>
-                    <td>$var</td>
-                    <td>$viewScreens</td>
-                    <td>$pressBox</td>
-                    <td>$chg</td>
-                    <td> <a href='deleteField.php ? fieldID=$id'> Delete </a> </td>
-                </tr>";
+                <td>{$row['Field_ID']}</td>
+                <td>{$row['Field_name']}</td>
+                <td>{$row['FieldOwner_ID']}</td>
+                <td>{$row['Field_Capacity']}</td>
+                <td>{$row['Address_Line1']}</td>
+                <td>{$row['City']}</td>
+                <td>{$row['Country']}</td>
+                <td>{$row['Postcode']}</td>
+                <td>{$row['GLT']}</td>
+                <td>{$row['VAR']}</td>
+                <td>{$row['View_Screens']}</td>
+                <td>{$row['Press_Box']}</td>
+                <td>{$row['Chg_Hour']}</td>
+                <td><a href='deleteField.php?fieldID={$row['Field_ID']}'>Delete</a></td>
+            </tr>";
         }
 
         echo "</table>";
         $db->close();
         ?>
     </div>
-</body>
-</html>
-
+</div>

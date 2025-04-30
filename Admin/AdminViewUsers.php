@@ -11,13 +11,15 @@
 <style>
 .admin-view-users{
     margin-right: 300px;
-    margin-left: 0;
+    margin-left: 10px;
+    
+    width: 100%;
 }
 </style>
 
 <body>
 <?php include("sidebar2.php");?>
-<div class="content">
+
     <h2 class="centered-header" style="text-align: center;">All Users
     <a href="AdminUsers.php">
         <button style="background-color: #c41818; margin-left:15px;"> < Return to page </button>
@@ -62,7 +64,7 @@
         $db->close();
         ?>
     </div>
-</div>
+
 </body>
 </html>
 
