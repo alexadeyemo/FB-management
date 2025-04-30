@@ -20,7 +20,7 @@ $bookings = array_fill(0, 5, "PENDING: Field 1 Booking 23/03/2025 - 6pm to 9pm")
     <title>Dashboard | Field Owner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
-    <style>
+    <!-- <style>
             .dashboard {
       display: flex;
       min-height: 100vh;
@@ -99,7 +99,7 @@ $bookings = array_fill(0, 5, "PENDING: Field 1 Booking 23/03/2025 - 6pm to 9pm")
     button:hover {
       background: #2980b9;
     }
-    .footer {
+    /* .footer {
       margin-top: auto;
       background: #0c1a2c;
       color: #ccc;
@@ -108,13 +108,13 @@ $bookings = array_fill(0, 5, "PENDING: Field 1 Booking 23/03/2025 - 6pm to 9pm")
       font-size: 13px;
       display: flex;
       justify-content: space-around;
-    }
+    } */
     canvas {
       background: #fff;
       border-radius: 5px;
       margin-top: 15px;
     }
-    </style>
+    </style> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -178,15 +178,15 @@ $bookings = array_fill(0, 5, "PENDING: Field 1 Booking 23/03/2025 - 6pm to 9pm")
                 </div>
                 </div>
 
-                <footer class="footer">
+                <!-- <footer class="footer">
                 <span>Terms and Conditions</span>
                 <span>Field Policies</span>
                 <span>Customer Support</span>
-                </footer>
+                </footer> -->
             </main>
         </div>
     </div>
-   
+    <?php include 'Footer.php'; ?>
     <!-- <script>
         var mySidebar = document.querySelector('Sidebar')
         var sidebar = new coreui.Sidebar(mySidebar)
