@@ -1,22 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Maintenance</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-
 <style>
-.admin-view-maint{
-    margin-right: 300px;
-    margin-left: 0;
+.admin-view-maint {
+    display: flex;
+    justify-content: center;
+
 }
+
+.admin-view-maint table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.admin-view-maint th,
+.admin-view-maint td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
 </style>
 
-<body>
-<?php include("sidebar2.php");?>
 <div class="content">
         <h2 class="centered-header">Current Maintenance Schedule</h2>
 
@@ -51,6 +54,4 @@
         ?>
     </div>
 </div>
-</body>
-</html>
 

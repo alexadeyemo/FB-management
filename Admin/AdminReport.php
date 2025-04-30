@@ -8,6 +8,43 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
+
+<style>
+.container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+
+}
+
+.buttons-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.buttons-column button {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.buttons-column button:hover {
+    background-color: #45a049;
+}
+
+.table-wrapper {
+    max-width: 100%;
+    margin-top: 0;
+}
+
+</style>
 <body>
     <?php
     include ("sidebar2.php");
@@ -21,28 +58,25 @@
     include ("sidebar2.php");
     ?>
 
-    <div>
-        <a href="AdminViewStatistics.php">
-            <button>View Match Statistics</button>
-        </a>
+    <div class="container">
+        <div class="buttons-column">
+            <a href="AdminViewStatistics.php">
+                <button>View Match Statistics</button>
+            </a>
+            <a href="AdminCreateStatPage.php">
+                <button>Add Match Statistics</button>
+            </a>
+            <a href="AdminCreateMaintPage.php">
+                <button>Add Maintenance Schedule</button>
+            </a>
+        </div>
+
+        <div class="table-wrapper">
+            <?php include("AdminViewMaintenance.php"); ?>
+        </div>
     </div>
 
-    <div>
-        <a href="AdminCreateStatPage.php">
-            <button>Add Match Statistics</button>
-        </a>
-    </div>
 
-    <div>
-        <a href="AdminCreateMaintPage.php">
-            <button>Add Match Maintenance Schedule</button>
-        </a>
-    </div>
-
-    <div>
-        <?php include ("AdminViewMaintenance.php"); ?>
-    </div>
-</div>
 
 </body>
 </html>
