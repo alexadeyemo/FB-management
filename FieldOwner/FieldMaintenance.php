@@ -78,5 +78,6 @@ if (!$fields_result) {
             </form>
         </div>
     </div>
+    <?php include 'Footer.php'; ?>
 </body>
 </html>
