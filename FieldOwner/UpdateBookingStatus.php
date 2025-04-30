@@ -1,18 +1,10 @@
 <?php
-// if (!isset($_SESSION['email'])) {
-//     header('Location: ../index.php');
-//     exit();
-// }
-
 if (isset($_POST['booking_id']) && isset($_POST['booking_status'])) {
     $booking_id = $_POST['booking_id'];
     $booking_status = $_POST['booking_status'];
     $booking_date = $_POST['booking_date'];
     $booking_time = $_POST['booking_time'];
     $field_id = $_POST['field_id'];
-
-    // echo "Booking ID: $booking_id\n";
-    // echo "Booking Status: $booking_status\n";
 
     $db = new SQLite3('../fb_managment_system.db');
     
@@ -46,7 +38,10 @@ if (isset($_POST['booking_id']) && isset($_POST['booking_status'])) {
     $stmt->bindValue(':id', $booking_id, SQLITE3_TEXT);
 
     if ($stmt->execute()) {
-        header('Location: Bookings.php');
+        echo "<script>
+            alert('Booking status changed successfully.');
+            window.location.href = 'Bookings.php';
+            </script>";
         exit();
     } else {
         echo "Failed to update status.";

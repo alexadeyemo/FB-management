@@ -3,21 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Field Overview | Field Owner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
-    <title>Field Overview | Field Owner</title>
-
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
-
-
-    <?php include 'Sidebar.php'; ?>
-
 
     <?php include 'Sidebar.php'; ?>
 
@@ -25,7 +16,6 @@
         <header>
             <h1>Field Overview</h1>
         </header>
-
 
 
         <section class="col">
@@ -114,7 +104,7 @@
         </section>
     </div>
 
-    
+    <?php include 'Footer.php'; ?>
 
 </body>
 </html>
@@ -124,8 +114,3 @@
     margin:600px 100px;
 } */
 </style>
-
-    </div>
-</body>
-</html>
-

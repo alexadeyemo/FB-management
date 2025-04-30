@@ -67,8 +67,7 @@ body {
     padding: 20px;
     width: calc(100% - 250px);
     flex: 1;
-    padding-bottom: 60px; /* Space for footer */
-
+    padding-bottom: 60px; 
 }
 
 .content header {

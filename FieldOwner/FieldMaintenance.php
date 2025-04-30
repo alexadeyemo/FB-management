@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: ../index.php");
+    exit();
+}
+
+$email = $_SESSION['email'];
+
+$db = new SQLite3('../fb_managment_system.db');
+
+$stmt = $db->prepare('
+                    SELECT Field_name, Field_ID
+                    FROM Field
+                    INNER JOIN Users ON Field.FieldOwner_ID = Users.User_ID
+                    WHERE Users.Email_Address = :email
+                ');
+
+$stmt->bindValue(':email', $email, SQLITE3_TEXT);
+$fields_result = $stmt->execute();
+            
+if (!$fields_result) {
+    echo "<script>
+            alert('Error fetching data.');
+            window.location.href = 'FieldMaintenance.php';
+            </script>";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +46,7 @@
         .form-group input, .form-group select { font-size: 1em; }
         .form-group input[type="date"] { padding: 9px; }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 
@@ -26,47 +58,28 @@
         </header>
 
         <div class="container">
-            <form action="../actions/register_user.php" method="post">
-                <div class="form-group">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" name="first_name" placeholder="First Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="surname">Surname:</label>
-                    <input type="text" name="surname" placeholder="Surname" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone_number">Phone Number:</label>
-                    <input type="text" name="phone_number" placeholder="Phone Number" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" name="address" placeholder="Address" required>
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth:</label>
-                    <input type="date" name="dob" required>
-                </div>
-                <div class="form-group">
-                    <label for="currency">Preferred Currency:</label>
-                    <select name="currency" required>
-                        <option value="USD">USD - US Dollar</option>
-                        <option value="EUR">EUR - Euro</option>
-                        <option value="GBP">GBP - British Pound</option>
-                        <option value="JPY">JPY - Japanese Yen</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit">Register</button>
+            <form action="SubmitMaintenance.php" method="POST">
+                <label for="field_id">Select Field:</label>
+                <select name="field_id" id="field_id" required>
+                    <option value="">-- Select Field --</option>
+                    <?php
+                    while ($row = $fields_result->fetchArray(SQLITE3_ASSOC)) {
+                        echo "<option value=\"" . htmlspecialchars($row['Field_ID']) . "\">" . htmlspecialchars($row['Field_name']) . "</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <label for="sched_date">Schedule Date:</label>
+                <input type="date" id="sched_date" name="sched_date" required><br><br>
+
+                <label for="sched_desc">Schedule Description:</label>
+                <textarea id="sched_desc" name="sched_desc" rows="4" cols="40" required></textarea><br><br>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
+    <?php include 'Footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
