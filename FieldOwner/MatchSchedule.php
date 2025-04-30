@@ -1,20 +1,23 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['email']) || $_SESSION['Role'] !== 'Manager') {
-    header("Location: ../index.php");
-    exit();
-}
+  if (!isset($_SESSION['email'])) {
+      header("Location: ../index.php");
+      exit();
+  }
 
 $email = $_SESSION['email'];
 $database = new SQLite3('../fb_managment_system.db');
 
 $teamQuery = $database->prepare('
-    SELECT Team_ID, Team_Name 
-    FROM Team 
-    WHERE Manager_ID = (
-        SELECT User_ID FROM Users WHERE Email_Address = :email
-    )');
+    SELECT Team_ID, Team_Name, Match.TeamA_ID, Match.TeamB_ID, Field_Booking.Booking_ID
+    FROM Team
+    INNER JOIN Match ON (Team.Team_ID = Match.TeamA_ID OR Team.Team_ID = Match.TeamB_ID)
+    INNER JOIN Field_Booking ON Match.Booking_ID = Field_Booking.Booking_ID
+    INNER JOIN Field ON Field_Booking.Field_ID = Field.Field_ID
+    INNER JOIN Users ON Field.FieldOwner_ID = Users.User_ID                                  
+    WHERE Users.Email_Address = :email
+    ');
 $teamQuery->bindValue(':email', $email, SQLITE3_TEXT);
 $teamResult = $teamQuery->execute();
 
@@ -36,6 +39,7 @@ $matchQuery = $database->prepare('
         t1.Team_Name AS team1, 
         t2.Team_Name AS team2, 
         m.Match_Date,
+        f.Field_name,
         CASE 
             WHEN m.TeamA_ID = :team_id THEN "Home" 
             ELSE "Away" 
@@ -43,6 +47,8 @@ $matchQuery = $database->prepare('
     FROM Match m
     INNER JOIN Team t1 ON m.TeamA_ID = t1.Team_ID
     INNER JOIN Team t2 ON m.TeamB_ID = t2.Team_ID
+    INNER JOIN Field_Booking fb ON m.Booking_ID = fb.Booking_ID
+    INNER JOIN Field f ON fb.Field_ID = f.Field_ID
     WHERE (m.TeamA_ID = :team_id OR m.TeamB_ID = :team_id)
     AND DATE(m.Match_Date) >= DATE("now")
     ORDER BY m.Match_Date ASC');
@@ -56,6 +62,7 @@ $results = $matchQuery->execute();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upcoming Matches</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     <style>
         .content { padding: 20px; }
@@ -99,14 +106,14 @@ $results = $matchQuery->execute();
 
         <?php if ($matchCount == 0): ?>
             <div class="no-matches">
-                <p>No upcoming matches scheduled for your team.</p>
+                <p>No upcoming matches scheduled on your fields.</p>
             </div>
         <?php else: ?>
             <table>
                 <tr>
                     <th>Matchup</th>
                     <th>Date</th>
-                    <th>Type</th>
+                    <th>Field</th>
                 </tr>
                 <?php while ($row = $results->fetchArray(SQLITE3_ASSOC)): 
                     $isHome = $row['match_type'] == 'Home';
@@ -117,7 +124,7 @@ $results = $matchQuery->execute();
                 <tr class="<?= $rowClass ?>">
                     <td><?= htmlspecialchars($yourTeam) ?> vs <?= htmlspecialchars($opponent) ?></td>
                     <td><?= htmlspecialchars($row['Match_Date']) ?></td>
-                    <td><span class="match-type"><?= htmlspecialchars($row['match_type']) ?></span></td>
+                    <td><?= htmlspecialchars($row['Field_name']) ?></td>
                 </tr>
                 <?php endwhile; ?>
             </table>
@@ -129,5 +136,6 @@ $results = $matchQuery->execute();
         <a href="#">Support</a>
         <a href="#">Policies</a>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
