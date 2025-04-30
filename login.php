@@ -27,9 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: Referee/pages/Dashboard.php');
             } elseif ($user['Role'] === 'Field Owner') {
                 header('Location: FieldOwner/FOwnerDashboard.php');
-            } elseif ($user['Role'] === 'Player') {
-                echo "<h2>Player page under development</h2>";
-            }
+            } 
             exit();
         } else {
             echo 'Incorrect password.';

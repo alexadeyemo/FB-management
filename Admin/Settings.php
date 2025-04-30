@@ -15,5 +15,18 @@
     <header>
         <h1>Settings</h1>
     </header>
+
+    <div>
+        <a href="AdminChangePassword.php">
+            <button>Change Password</button>
+        </a>
+    </div>
+
+    <div>
+        <a href="Logout.php">
+            <button>Log Out</button>
+        </a>
+    </div>
+
 </body>
 </html>

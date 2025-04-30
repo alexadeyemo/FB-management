@@ -12,7 +12,7 @@
     <?php include 'Sidebar.php'; ?>
     <div class="content">
         <header>
-            <h1>Bookings</h1>
+            <h1>Maintenance Schedule</h1>
         </header>
     
 
@@ -40,18 +40,15 @@
 
                                 $stmt = $db->prepare('
                                     SELECT
-                                    Field_Booking.Field_ID,
-                                    Field_Booking.Booking_ID,
+                                    Maintenance_Schedule.Field_ID,
+                                    Maintenance_Schedule.MSched_ID,
                                     Field.Field_name AS field_name,
-                                    Team.Manager_ID AS manager_id,
-                                    Field_Booking.Booking_Date,
-                                    Field_Booking.Booking_Time,
-                                    Field_Booking.Booking_Duration,
-                                    Field_Booking.Booking_Status
-                                    FROM Field_Booking
-                                    INNER JOIN Field ON Field_Booking.Field_ID = Field.Field_ID
-                                    INNER JOIN Users ON Field.FieldOwner_ID = Users.User_ID
-                                    INNER JOIN Team on Field_Booking.Manager_ID = Team.Manager_ID                                    
+                                    Maintenance_Schedule.MSched_Date,
+                                    Maintenance_Schedule.MSched_Status,
+                                    Maintenance_Schedule.MSched_Desc
+                                    FROM Maintenance_Schedule
+                                    INNER JOIN Field ON Maintenance_Schedule.Field_ID = Field.Field_ID
+                                    INNER JOIN Users ON Field.FieldOwner_ID = Users.User_ID                                  
                                     WHERE Users.Email_Address = :email
                                 ');
 
@@ -69,31 +66,25 @@
                                     <tr>
                                         <th scope='col'>ID</th>
                                         <th scope='col'>Field</th>
-                                        <th scope='col'>Team Manager</th>
                                         <th scope='col'>Date</th>
-                                        <th scope='col'>Time</th>
-                                        <th scope='col'>Duration</th>
+                                        <th scope='col'>Description</th>
                                         <th scope='col'>Status</th>
                                     </tr>
                                 </thead>";
 
                                     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
                                         echo "<tr>
-                                                <td>" . htmlspecialchars($row['Booking_ID']) . "</td>
+                                                <td>" . htmlspecialchars($row['MSched_ID']) . "</td>
                                                 <td>" . htmlspecialchars($row['field_name']) . "</td>
-                                                <td>" . htmlspecialchars($row['manager_id']) . "</td>
-                                                <td>" . htmlspecialchars($row['Booking_Date']) . "</td>
-                                                <td>" . htmlspecialchars($row['Booking_Time']) . "</td>
-                                                <td>" . htmlspecialchars($row['Booking_Duration']) . " hours</td>
+                                                <td>" . htmlspecialchars($row['MSched_Date']) . "</td>
+                                                <td>" . htmlspecialchars($row['MSched_Desc']) . "</td>
                                                 <td>
-                                                    <form method='POST' action='UpdateBookingStatus.php' style='display: inline-block;'>
-                                                        <input type='hidden' name='booking_id' value='" . htmlspecialchars($row['Booking_ID']) . "'>
-                                                        <input type='hidden' name='field_id' value='" . htmlspecialchars($row['Field_ID']) . "'>
-                                                        <input type='hidden' name='booking_date' value='" . htmlspecialchars($row['Booking_Date']) . "'>
-                                                        <input type='hidden' name='booking_time' value='" . htmlspecialchars($row['Booking_Time']) . "'>
-                                                        <select name='booking_status' required>
-                                                            <option value='Pending' " . ($row['Booking_Status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
-                                                            <option value='Confirmed' " . ($row['Booking_Status'] == 'Confirmed' ? 'selected' : '') . ">Confirmed</option>
+                                                    <form method='POST' action='UpdateMaintenanceStatus.php' style='display: inline-block;'>
+                                                        <input type='hidden' name='msched_id' value='" . htmlspecialchars($row['MSched_ID']) . "'>
+                                                        <select name='msched_status' required>
+                                                            <option value='Scheduled' " . ($row['MSched_Status'] == 'Scheduled' ? 'selected' : '') . ">Scheduled</option>
+                                                            <option value='Ongoing' " . ($row['MSched_Status'] == 'Ongoing' ? 'selected' : '') . ">Ongoing</option>
+                                                            <option value='Completed' " . ($row['MSched_Status'] == 'Completed' ? 'selected' : '') . ">Completed</option>
                                                         </select>
                                                         <button type='submit' class='btn btn-sm btn-primary'>Update</button>
                                                     </form>
